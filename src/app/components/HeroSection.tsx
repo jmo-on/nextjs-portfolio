@@ -25,19 +25,22 @@ const HeroSection  = () => {
             </span>
           </h1>
           <p className="text-khaki sm:text-lg lg:text-xl mb-6">
-          Enthusiastic UG @ Johns Hopkins University majoring in Computer Science and aiming for Masters.
-          Area of focus is Full-stack, NLP, ML, and Computer Graphics.
+            Enthusiastic Undergraduate at Johns Hopkins University <br/>
+            Full-stack / LLM / ML / Game / Computer Graphics
           </p>
           <button className="bg-khaki w-full sm:w-fit rounded-full px-1 py-1 mr-4 mb-3">
             <span className="block text-khaki hover:text-olive bg-olive hover:bg-transparent rounded-full px-5 py-2">
-              Linked In
+            <a target="_blank" href="https://www.linkedin.com/in/jayden-moonjh/">Linked In</a>
             </span>
           </button>
           <button className="bg-gray-gradient w-full sm:w-fit rounded-full px-1 py-1">
             <span className="block text-gray-400 hover:text-olive bg-olive hover:bg-transparent rounded-full px-5 py-2">
-              Resumé
+            <a href="/files/JHM 2024 Resume.pdf" target="_blank" rel="noopener noreferrer">Resumé</a>
             </span>
           </button>
+          <h2 className="col-span-1 md:hidden text-center sm:text-left text-4xl font-bold text-beige mt-40 my-4">
+            About Me
+          </h2>
         </div>
         <div className="order-1 lg:order-2 col-span-5 place-self-center mb-10 lg:mt-1">
           <div className="rounded-full  w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] relative overflow-hidden">

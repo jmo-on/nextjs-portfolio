@@ -62,6 +62,10 @@ body {
     color: #f5f5dc;
   }
 
+  .border-beige {
+    border-color: #f5f5dc;
+  }
+
   .bg-gray-gradient {
     background: linear-gradient(to right, #e5e5e5, #737373);
   }
