@@ -31,3 +31,43 @@ body {
     text-wrap: balance;
   }
 }
+
+/* custom colors */
+@layer utilities {
+  .bg-olive {
+    background-color: #283316;
+  }
+
+  .text-olive {
+    color: #283316;
+  }
+
+  .bg-khaki {
+    background-color: #c3b091;
+  }
+
+  .text-khaki {
+    color: #c3b091;
+  }
+
+  .bg-beige {
+    background-color: #f5f5dc;
+  }
+
+  .text-beige {
+    color: #f5f5dc;
+  }
+
+  .bg-gray-gradient {
+    background: linear-gradient(to right, #d1d5db, #4b5563);
+  }
+
+  .text-gray-gradient {
+    color: linear-gradient(to right, #d1d5db, #4b5563);
+  }
+
+  .bg-clip-text-css {
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}  
