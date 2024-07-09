@@ -1,16 +1,18 @@
-import React from 'react'
-import Image from 'next/image'
-import { TypeAnimation } from 'react-type-animation';
+'use client';
 
-export const HeroSection  = () => {
+import React from "react"
+import Image from "next/image"
+import { TypeAnimation } from "react-type-animation";
+
+const HeroSection  = () => {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-7 place-self-center text-center sm:text-left">
-          <h1 className="text-khaki mb-4 text-4xl sm:text-5xl lg:text-6xl font font-extrabold">
+          <h1 className="text-beige mb-4 text-4xl sm:text-5xl lg:text-6xl font font-extrabold">
             <TypeAnimation
               sequence={[
-                'Jin Hong ',
+                "Jin Hong ",
                 1000,
               ]}
               wrapper="span"
@@ -18,11 +20,11 @@ export const HeroSection  = () => {
               cursor={false}
               // repeat={Infinity}
             />
-            <span className="text-transparent bg-clip-text-css bg-gray-gradient">
+            <span className="bg-clip-text-css bg-gray-gradient">
               Moon
             </span>
           </h1>
-          <p className="text-gray-400 sm:text-lg lg:text-xl mb-6">
+          <p className="text-khaki sm:text-lg lg:text-xl mb-6">
           Enthusiastic UG @ Johns Hopkins University majoring in Computer Science and aiming for Masters.
           Area of focus is Full-stack, NLP, ML, and Computer Graphics.
           </p>
@@ -52,3 +54,5 @@ export const HeroSection  = () => {
     </section>
   )
 }
+
+export default HeroSection
