@@ -50,6 +50,10 @@ body {
     color: #c3b091;
   }
 
+  .border-khaki {
+    border-color: #c3b091;
+  }
+
   .bg-beige {
     background-color: #f5f5dc;
   }
@@ -59,11 +63,11 @@ body {
   }
 
   .bg-gray-gradient {
-    background: linear-gradient(to right, #d1d5db, #4b5563);
+    background: linear-gradient(to right, #e5e5e5, #737373);
   }
 
   .text-gray-gradient {
-    color: linear-gradient(to right, #d1d5db, #4b5563);
+    color: linear-gradient(to right, #e5e5e5, #737373);
   }
 
   .bg-clip-text-css {

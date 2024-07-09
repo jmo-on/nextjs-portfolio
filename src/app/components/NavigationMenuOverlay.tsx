@@ -1,5 +1,4 @@
 import React from "react"
-import { FC } from "react";
 import NavigationMenuItem from "./NavigationMenuItem";
 
 interface Link {
@@ -11,7 +10,7 @@ interface NavigationMenuOverlayProps {
   links: Link[];
 }
 
-const NavigationMenuOverlay: FC<NavigationMenuOverlayProps> = ({ links }) => {
+const NavigationMenuOverlay: React.FC<NavigationMenuOverlayProps> = ({ links }) => {
   return (
     <ul className="flex flex-col items-center py-4 pl-2">
       {
