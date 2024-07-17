@@ -26,7 +26,7 @@ const HeroSection  = () => {
           </h1>
           <p className="text-khaki sm:text-lg lg:text-xl mb-6">
             Enthusiastic Undergraduate at Johns Hopkins University <br/>
-            Full-stack / LLM / ML / Game / Computer Graphics
+            Full-stack / ML / Game Dev
           </p>
           <button className="bg-khaki w-full sm:w-fit rounded-full px-1 py-1 mr-4 mb-3">
             <span className="block text-khaki hover:text-olive bg-olive hover:bg-transparent rounded-full px-5 py-2">
