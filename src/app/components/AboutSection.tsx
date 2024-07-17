@@ -4,13 +4,13 @@ import React, { useTransition, useState } from "react"
 import Image from "next/image"
 import AboutTabButtons from "./AboutTabButtons";
 
-interface TabDatum {
+interface tabDatum {
   title: string,
   id: string,
   content: React.JSX.Element
 }
 
-const TAB_DATA: TabDatum[] = [
+const tabData: tabDatum[] = [
   {
     title: "Skills",
     id: "skills",
@@ -75,7 +75,7 @@ const AboutSection: React.FC = () => {
     });
   };
 
-  const selectedTab = TAB_DATA.find((t) => t.id === tab) ?? TAB_DATA[0];
+  const selectedTab = tabData.find((t) => t.id === tab) ?? tabData[0];
 
   return (
     <section className="text-white">

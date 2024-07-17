@@ -8,7 +8,12 @@ import NavigationMenuOverlay from "./NavigationMenuOverlay";
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
 
-const menuItems = [
+interface menuItem {
+  href: string;
+  title: string;
+}
+
+const menuItems: menuItem[] = [
   {
     href: "#about",
     title: "About"
@@ -23,7 +28,7 @@ const menuItems = [
   }
 ]
 
-const NavigationBar = () => {
+const NavigationBar: React.FC = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
 
   return (
