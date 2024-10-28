@@ -36,7 +36,7 @@ const HeroSection  = () => {
           <button className="bg-gray-gradient w-full sm:w-fit rounded-full px-1 py-1">
             <span className="block text-gray-400 hover:text-olive bg-olive hover:bg-transparent rounded-full px-5 py-2">
             {/* <a href="/files/JHM 2024 Resume.pdf" target="_blank" rel="noopener noreferrer">Resumé</a> */}
-            <a target="_blank" href="https://docs.google.com/document/d/1Iex7LP66fobhw0KGan7havSMotQAiJ6RayV8lw77pjw/edit?usp=sharing">Resumé</a>
+            <a target="_blank" href="https://drive.google.com/file/d/1af7puCDAqeyv_Ba_4tTILWLtyHwWrcVD/view?usp=sharing">Resumé</a>
             </span>
           </button>
           <h2 className="col-span-1 md:hidden text-center sm:text-left text-4xl font-bold text-beige mt-40 my-4">
