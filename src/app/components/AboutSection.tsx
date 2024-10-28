@@ -19,18 +19,15 @@ const tabData: tabDatum[] = [
         <div>
           <h2 className="text-khaki font-bold">Coding</h2>
           <ul className="text-khaki list-disc pl-3">
-            <li>C</li>
-            <li>C++</li>
-            <li>JAVA</li>
-            <li>Python</li>
-            <li>R</li>
-            <li>SQL</li>
-            <li>HTML</li>
-            <li>CSS / Tailwind / Bootstrap</li>
+            <li>C / C++ / C# / Java / Python / R</li>
+            <li>HTML / CSS (Tailwind, Bootstrap)</li>
             <li>JavaScript / TypeScript</li>
-            <li>Linux</li>
-            <li>AWS / GCP</li>
-            <li>Django / MERN / Spring Boot</li>
+            <li>SQL (PostgreSQL, MySQL) / MongoDB</li>
+            <li>AWS / Google Cloud</li>
+            <li>React.js / Next.js / Node.js / Django / Flask / Spring Boot</li>
+            <li>Git / Docker / Kubernetes</li>
+            <li>JMonkeyEngine / Unity</li>
+            <li>TensorFlow / PyTorch / scikit-learn</li>
           </ul>
         </div>
         <div>
@@ -52,7 +49,7 @@ const tabData: tabDatum[] = [
         <ul className="text-khaki list-disc pl-3">
           <li>Expected Graduation: 2026</li>
           <li>Majors: Computer Science, Applied Math & Statistics</li>
-          <li>Minors: Arts, Entrepreneursip & Management, Computer Integrated Surgery</li>
+          <li>Minors: Arts</li>
         </ul>
         <br/>
         <h2 className="text-khaki font-bold">Korea University</h2>
