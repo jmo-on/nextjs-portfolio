@@ -17,24 +17,26 @@ const tabData: tabDatum[] = [
     content: (
       <div className="flex">
         <div>
-          <h2 className="text-khaki font-bold">Coding</h2>
+        <h2 className="text-khaki font-bold">Language</h2>
           <ul className="text-khaki list-disc pl-3">
-            <li>C / C++ / C# / Java / Python / R</li>
-            <li>HTML / CSS (Tailwind, Bootstrap)</li>
+            <li>Python / C / C++ / C# / Java / R</li>
             <li>JavaScript / TypeScript</li>
-            <li>SQL (PostgreSQL, MySQL) / MongoDB</li>
-            <li>AWS / Google Cloud</li>
-            <li>React.js / Next.js / Node.js / Django / Flask / Spring Boot</li>
-            <li>Git / Docker / Kubernetes</li>
-            <li>JMonkeyEngine / Unity</li>
-            <li>TensorFlow / PyTorch / scikit-learn</li>
+            <li>HTML / CSS (Tailwind, Bootstrap)</li>
+            <li>SQL (PostgreSQL, MySQL) / NoSQL (MongoDB)</li>
           </ul>
-        </div>
-        <div>
-          <h2 className="text-khaki font-bold">Language</h2>
+          <h2 className="text-khaki font-bold">Frameworks</h2>
           <ul className="text-khaki list-disc pl-3">
-            <li>Korean</li>
-            <li>Japanese</li>
+            <li>React.js / Next.js / Node.js / Django / Flask / Spring Boot</li>
+            <li>JMonkeyEngine / Unity</li>
+          </ul>
+          <h2 className="text-khaki font-bold">Tools</h2>
+          <ul className="text-khaki list-disc pl-3">
+            <li>AWS / Google Cloud</li>
+            <li>Git / Docker / Kubernetes</li>
+          </ul>
+          <h2 className="text-khaki font-bold">Libraries</h2>
+          <ul className="text-khaki list-disc pl-3">
+            <li>TensorFlow / PyTorch / scikit-learn</li>
           </ul>
         </div>
       </div>
