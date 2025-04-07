@@ -2,7 +2,6 @@
 
 import React, { useTransition, useState } from "react"
 import Image from "next/image"
-import AboutTabButtons from "./AboutTabButtons";
 
 interface tabDatum {
   title: string,
@@ -16,29 +15,6 @@ const tabData: tabDatum[] = [
     id: "skills",
     content: (
       <div className="flex">
-        <div>
-        <h2 className="text-khaki font-bold">Language</h2>
-          <ul className="text-khaki list-disc pl-3">
-            <li>Python / C / C++ / C# / Java / R</li>
-            <li>JavaScript / TypeScript</li>
-            <li>HTML / CSS (Tailwind, Bootstrap)</li>
-            <li>SQL (PostgreSQL, MySQL) / NoSQL (MongoDB)</li>
-          </ul>
-          <h2 className="text-khaki font-bold">Frameworks</h2>
-          <ul className="text-khaki list-disc pl-3">
-            <li>React.js / Next.js / Node.js / Django / Flask / Spring Boot</li>
-            <li>JMonkeyEngine / Unity</li>
-          </ul>
-          <h2 className="text-khaki font-bold">Tools</h2>
-          <ul className="text-khaki list-disc pl-3">
-            <li>AWS / Google Cloud</li>
-            <li>Git / Docker / Kubernetes</li>
-          </ul>
-          <h2 className="text-khaki font-bold">Libraries</h2>
-          <ul className="text-khaki list-disc pl-3">
-            <li>TensorFlow / PyTorch / scikit-learn</li>
-          </ul>
-        </div>
       </div>
     )
   },
@@ -47,18 +23,6 @@ const tabData: tabDatum[] = [
     id: "education",
     content: (
       <div>
-        <h2 className="text-khaki font-bold">Johns Hopkins University (GPA: 4.0/4)</h2>
-        <ul className="text-khaki list-disc pl-3">
-          <li>Expected Graduation: 2026</li>
-          <li>Majors: Computer Science, Applied Math & Statistics</li>
-          <li>Minors: Arts</li>
-        </ul>
-        <br/>
-        <h2 className="text-khaki font-bold">Korea University</h2>
-        <ul className="text-khaki list-disc pl-3">
-          <li>2024 International Winter Campus</li>
-          <li>Courses: Linear Algebra (A)</li>
-        </ul>
       </div>
     )
   },
@@ -78,32 +42,73 @@ const AboutSection: React.FC = () => {
 
   return (
     <section className="text-white">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 sm:py-16 xl:px-16 xl:gap-16">
-        <div className="md:w-auto pl-4 pr-4 m-auto sm:m-0">
-          <Image src="/images/about-image.png" alt="about image" width={500} height={500} />
+    
+      {/* <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className="order-2 lg:order-1 col-span-7 place-self-start text-center sm:text-left">
+          
         </div>
-        <div className="mt-4 lg:mt-0 text-left flex flex-col h-full">
-          <h2 className="hidden md:block text-4xl font-bold text-beige">About Me</h2>
-          <p className="text-base lg:text-lg text-khaki">
-            
+        <div className="order-1 lg:order-2 col-span-5 place-self-center mb-10 lg:mt-1" />
+      </div> */}
+
+      <h2 className="hidden lg:block text-4xl font-bold text-beige md:mt-0 sm:mt-10">About Me</h2>
+
+      <div className="md:grid md:grid-cols-2 gap-8 items-start sm:py-8 xl:px-16 xl:gap-16">
+
+        <div className="grid md:w-auto pl-4 pr-4 m-auto sm:m-0">
+          <p className="mr-3 mb-1 font-semibold text-beige border-b border-khaki">
+            {" "}Education{" "}
           </p>
-          <div className="flex flex-row mt-8">
-            <AboutTabButtons
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {" "}Skills{" "}
-            </AboutTabButtons>
-            <AboutTabButtons
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              {" "}Education{" "}
-            </AboutTabButtons>
-          </div>
-          <div className="mt-4">{selectedTab.content}</div>
+          <h2 className="text-khaki font-bold">Johns Hopkins University (GPA: 3.96/4)</h2>
+          <ul className="list-disc pl-3 text-beige">
+            <li>Expected Graduation: 2026</li>
+            <li>Majors: Computer Science, Applied Math & Statistics</li>
+          </ul>
+          <br/>
+
+          <p className="mr-3 mb-1 font-semibold text-beige border-b border-khaki">
+            {" "}Experience{" "}
+          </p>
+          <h2 className="text-khaki font-bold">Internship</h2>
+          <ul className="list-disc pl-3 text-beige">
+            <li>Bloomberg</li>
+            <li>Claudius Legal Intelligence</li>
+          </ul>
+
+          <h2 className="text-khaki font-bold">Projects</h2>
+          <ul className="list-disc pl-3 text-beige">
+            <li>Noori AI, Summit, Delineo Modeling Project</li>
+          </ul>
         </div>
+
+        <div className="md:w-auto pl-4 pr-4 m-auto sm:m-0">
+          <p className="mr-3 mb-1 font-semibold text-beige border-b border-khaki">
+            {" "}Skills{" "}
+          </p>
+          <div className="flex-col gap-5">
+            <div>
+              <h2 className="text-khaki font-bold">Languages</h2>
+              <ul className="list-disc pl-3 text-beige">
+                <li>Python, C, C++, Go, Java, SQL</li>
+              </ul>
+              <h2 className="text-khaki font-bold">Frameworks</h2>
+              <ul className="list-disc pl-3 text-beige">
+                <li>Flask, Django, Supabase, Node.js, React.js, Next.js</li>
+              </ul>
+              <h2 className="text-khaki font-bold">Developer Tools</h2>
+              <ul className="list-disc pl-3 text-beige">
+                <li>AWS, GCP, Docker, Kubernetes, Celery, Apache Spark</li>
+              </ul>
+              <h2 className="text-khaki font-bold">Libraries</h2>
+              <ul className="list-disc pl-3 text-beige">
+                <li>PyTorch, TensorFlow, Scikit-learn, HuggingFace</li>
+                <li>Numpy, Pandas, Matplotlib, SQLAlchemy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </section>
   )
 }
