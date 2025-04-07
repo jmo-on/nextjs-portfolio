@@ -60,7 +60,7 @@ const AboutSection: React.FC = () => {
           </p>
           <h2 className="text-khaki font-bold">Johns Hopkins University (GPA: 3.96/4)</h2>
           <ul className="list-disc pl-3 text-beige">
-            <li>Expected Graduation: 2026</li>
+            <li>Expected Graduation: 2027</li>
             <li>Majors: Computer Science, Applied Math & Statistics</li>
           </ul>
           <br/>
