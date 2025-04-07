@@ -66,9 +66,9 @@ const AboutSection: React.FC = () => {
           <br/>
 
           <p className="mr-3 mb-1 font-semibold text-beige border-b border-khaki">
-            {" "}Experience{" "}
+            {" "}Experiences{" "}
           </p>
-          <h2 className="text-khaki font-bold">Internship</h2>
+          <h2 className="text-khaki font-bold">Internships</h2>
           <ul className="list-disc pl-3 text-beige">
             <li>Bloomberg</li>
             <li>Claudius Legal Intelligence</li>
