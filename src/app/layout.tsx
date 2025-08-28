@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jin Hong Moon",
-  description: "personal portfolio website",
+  description: "personal website",
+  icons: { icon: '/favicon.ico' }
 };
 
 export default function RootLayout({
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className="min-h-screen h-full bg-gray-300 text-gray-900 antialiased">
+        {children}
+      </body>
     </html>
   );
 }
