@@ -92,7 +92,7 @@ const AboutSection: React.FC = () => {
               </ul>
               <h2 className="text-khaki font-bold">Frameworks</h2>
               <ul className="list-disc pl-3 text-beige">
-                <li>Flask, Django, Supabase, Node.js, React.js, Next.js</li>
+                <li>Flask, Django, Supabase, Node.js, React.js</li>
               </ul>
               <h2 className="text-khaki font-bold">Developer Tools</h2>
               <ul className="list-disc pl-3 text-beige">
