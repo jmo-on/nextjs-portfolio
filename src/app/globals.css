@@ -43,11 +43,11 @@ body {
   }
 
   .bg-khaki {
-    background-color: #c3b091;
+    background-color: #9a895a;
   }
 
   .text-khaki {
-    color: #c3b091;
+    color: #9a895a;
   }
 
   .border-khaki {
@@ -67,7 +67,7 @@ body {
   }
 
   .bg-gray-gradient {
-    background: linear-gradient(to right, #e5e5e5, #737373);
+    background: linear-gradient(to right, #9e9e9e, #737373);
   }
 
   .text-gray-gradient {
