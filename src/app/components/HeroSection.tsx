@@ -28,21 +28,23 @@ const HeroSection  = () => {
             <br/>
             Software & Machine Learning Engineer
           </p>
-          <button className="bg-black w-fit rounded-full px-1 py-1 mr-4 mb-3">
-            <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
-            <a target="_blank" href="https://www.linkedin.com/in/jayden-moonjh/">LinkedIn</a>
-            </span>
-          </button>
-          <a
-            href="/Jin_Hong_Moon-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-black rounded-full px-1 py-1"
-          >
-            <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
-              Resume
-            </span>
-          </a>
+          <div className="flex justify-center gap-4 mb-3">
+            <button className="bg-black rounded-full px-1 py-1">
+              <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
+                <a target="_blank" href="https://www.linkedin.com/in/jayden-moonjh/">LinkedIn</a>
+              </span>
+            </button>
+            <a
+              href="/Jin_Hong_Moon-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black rounded-full px-1 py-1"
+            >
+              <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
+                Resume
+              </span>
+            </a>
+          </div>
         </div>
       </div>  
     </section>
