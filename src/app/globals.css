@@ -23,8 +23,8 @@ button { font: inherit; }
 a:focus-visible, button:focus-visible { outline: 2px solid #b8dfff; outline-offset: 6px; }
 .flight-tools { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 24px; animation: appear .7s ease both; }
  .score-stat { display: grid; gap: 6px; min-width: 110px; text-align: center; }
-.score-stat small { font: 9px monospace; color: #9b8a84; letter-spacing: 1.5px; }
-.score-stat strong { font-size: 24px; font-weight: 400; font-variant-numeric: tabular-nums; color: #f1d2a8; }
+.score-stat small { font: 12px Arial, sans-serif; color: #a5a7ad; letter-spacing: 0; }
+.score-stat strong { font-size: 24px; font-weight: 400; font-variant-numeric: tabular-nums; color: #ecebe6; }
 .score-divider { width: 1px; height: 36px; background: #ffffff20; }
 .score-status { font-size: 9px; color: #8d8887; }
 .space-points { position: absolute; pointer-events: none; color: #e9d2a1; font-size: 23px; font-weight: 400; text-shadow: 0 0 18px #d5b26d33; opacity: 0; }
@@ -78,9 +78,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid #b8dfff; outline-offs
 @media(max-width:650px) {
   .flight-tools { gap: 10px; }
   .score-stat { min-width: 85px; }
-  .score-stat small { font-size: 7px; letter-spacing: .7px; }
+  .score-stat small { font-size: 11px; letter-spacing: 0; }
   .score-stat strong { font-size: 20px; }
 }
 
 .life-empty { display: inline-block; opacity: .2; filter: grayscale(1); }
 .life-full { display: inline-block; opacity: 1; }
+
+.return-indicator { position: absolute; display: flex; align-items: center; gap: 9px; transform: translateX(-50%); color: #ecebe6; font-size: 12px; pointer-events: none; white-space: nowrap; }
+.return-indicator[hidden] { display: none; }
+.return-indicator small { display: block; margin-top: 3px; color: #969ca6; font-size: 10px; }
+.return-ring { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: conic-gradient(#ecebe6 var(--progress, 0deg), #ffffff26 0); }
+.return-ring > span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #05070d; font-size: 18px; }

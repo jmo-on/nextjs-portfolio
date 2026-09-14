@@ -1,3 +1,4 @@
+export const RETURN_HOLD_SECONDS = 1;
 export const STAR_INTERVAL = 1.05;
 export const STAR_SPEED = 7.5;
 export const FLIGHT_SPEED = 8.5;
@@ -26,7 +27,7 @@ export function stepTail(bend: number, speed: number, target: number, dt: number
 
 export function stepReturn(amount: number, hold: number, leftHeldAtEdge: boolean, dt: number) {
   hold = leftHeldAtEdge ? hold + dt : 0;
-  const target = leftHeldAtEdge ? Math.min(1, hold / 2) : 0;
+  const target = leftHeldAtEdge ? Math.min(1, hold / RETURN_HOLD_SECONDS) : 0;
   amount += (target - amount) * (1 - Math.exp(-dt * 3));
-  return { amount, hold, landing: hold >= 2 };
+  return { amount, hold, landing: hold >= RETURN_HOLD_SECONDS };
 }

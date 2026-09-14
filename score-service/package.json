@@ -1,6 +1,11 @@
 {
   "name": "star-eater-score-service",
   "private": true,
-  "scripts": { "dev": "wrangler dev", "deploy": "wrangler deploy" },
-  "devDependencies": { "wrangler": "^4.0.0" }
+  "scripts": {
+    "dev": "wrangler dev --var ALLOWED_ORIGIN:http://127.0.0.1:3000",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
 }

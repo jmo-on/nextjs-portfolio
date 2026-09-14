@@ -4,7 +4,7 @@ import { createStarCollector } from './StarCollector';
 import { createPassengerFactory } from './RescuePassengers';
 import { landingPosition, LANDING_DURATION } from './landingPath';
 import { newRun, resolvePassenger, RunState } from './runRules';
-import { nextStarLane, swallowedStarScale, stepReturn, STAR_INTERVAL, STAR_SPEED, FLIGHT_SPEED } from './flightPhysics';
+import { nextStarLane, swallowedStarScale, stepReturn, RETURN_HOLD_SECONDS, STAR_INTERVAL, STAR_SPEED, FLIGHT_SPEED } from './flightPhysics';
 
 export type FlightSave = RunState;
 export type FlightProgress = { travel: number; flying: boolean; save: FlightSave };
@@ -139,6 +139,13 @@ export function createMoonScene(host: HTMLDivElement, update: (state: FlightProg
   boardPrompt.className = 'boarding-bubble'; boardPrompt.textContent = 'Enter ↵';
   boardPrompt.setAttribute('aria-label', 'Press Enter to board the star collector');
   boardPrompt.hidden = true; host.appendChild(boardPrompt);
+  const returnIndicator = document.createElement('div');
+  returnIndicator.className = 'return-indicator'; returnIndicator.hidden = true;
+  returnIndicator.innerHTML = '<span class="return-ring"><span>←</span></span><span>Hold to land<small>1 sec</small></span>';
+  returnIndicator.setAttribute('role', 'progressbar');
+  returnIndicator.setAttribute('aria-label', 'Hold Left to land');
+  returnIndicator.setAttribute('aria-valuemin', '0'); returnIndicator.setAttribute('aria-valuemax', '100');
+  host.appendChild(returnIndicator);
   const boardingStart = new THREE.Vector3();
   let save: FlightSave = newRun(0);
   // This run's catches are submitted to the shared scoreboard by the UI.
@@ -164,7 +171,7 @@ export function createMoonScene(host: HTMLDivElement, update: (state: FlightProg
   function starResult(red: boolean, caught: boolean) {
     const before = save.lives; save = resolvePassenger(save, red, caught);
     if (save.lives < before) { damage = 1; popup.textContent = '−1 👽'; popTime = 0; }
-    else if (!red && caught) { bite = 1; popup.textContent = '+1 saved'; popTime = 0; }
+    else if (!red && caught) { bite = 1; popup.textContent = '+1'; popTime = 0; }
     emit();
     if (save.lives === 0) { clearRocks(); heldKeys.clear(); change('gameover'); }
   }
@@ -353,6 +360,15 @@ export function createMoonScene(host: HTMLDivElement, update: (state: FlightProg
       popup.style.left = `${(projected.x * .5 + .5) * width}px`; popup.style.top = `${(-projected.y * .5 + .5) * height - popTime * 24}px`;
       popup.style.opacity = String(clamp(1 - popTime, 0, 1));
     } else popup.style.opacity = '0';
+    returnIndicator.hidden = phase !== 'flight' || ship.position.x > -1.1;
+    if (!returnIndicator.hidden) {
+      const progress = clamp(returnHold / RETURN_HOLD_SECONDS, 0, 1);
+      returnIndicator.style.setProperty('--progress', `${progress * 360}deg`);
+      returnIndicator.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
+      const projected = ship.position.clone().add(new THREE.Vector3(-.2, -.9, 0)).project(camera);
+      returnIndicator.style.left = `${(projected.x * .5 + .5) * width}px`;
+      returnIndicator.style.top = `${(-projected.y * .5 + .5) * height}px`;
+    }
     if (phase !== 'moon' && phase !== 'ignition') emit();
     renderer.render(scene, camera);
   }
@@ -365,7 +381,7 @@ export function createMoonScene(host: HTMLDivElement, update: (state: FlightProg
       document.removeEventListener('visibilitychange', visibility); window.removeEventListener('blur', blur); window.removeEventListener('focus', focus);
       const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>();
       scene.traverse(obj => { if (obj instanceof THREE.Mesh || obj instanceof THREE.Points) { geometries.add(obj.geometry); for (const mat of Array.isArray(obj.material) ? obj.material : [obj.material]) materials.add(mat); } });
-      geometries.add(streakGeometry); materials.add(streakMaterial); geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose()); maps.texture.dispose(); maps.bump.dispose(); renderer.dispose(); renderer.domElement.remove(); popup.remove(); boardPrompt.remove();
+      geometries.add(streakGeometry); materials.add(streakMaterial); geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose()); maps.texture.dispose(); maps.bump.dispose(); renderer.dispose(); renderer.domElement.remove(); popup.remove(); boardPrompt.remove(); returnIndicator.remove();
     },
   };
 }

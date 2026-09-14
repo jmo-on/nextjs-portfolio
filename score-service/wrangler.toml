@@ -3,7 +3,7 @@ main = "src/index.ts"
 compatibility_date = "2026-01-01"
 
 [vars]
-ALLOWED_ORIGIN = "http://127.0.0.1:3000"
+ALLOWED_ORIGIN = "https://www.jinhongmoon.com"
 
 [[durable_objects.bindings]]
 name = "SCORES"

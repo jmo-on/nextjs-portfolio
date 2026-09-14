@@ -1,4 +1,4 @@
-# Global star-collector high score
+# Global rescue high score
 
 This Cloudflare Worker and SQLite-backed Durable Object provide one persistent,
 atomic global high score across visitors without changing the portfolio's static export.
@@ -27,3 +27,12 @@ totals are retained separately and are not interpreted as individual records.
 
 One rescued person equals one saved. Only alien collisions cost a life; missed
 passengers do not. Rescue records are separate from the former star-point records.
+
+## Production
+
+Worker: https://moon-star-eater-score.star-eater-score-service.workers.dev
+
+The GitHub repository variable `NEXT_PUBLIC_SCORE_API_URL` supplies this endpoint
+at build time. The Worker permits the production origin `https://www.jinhongmoon.com`;
+`npm run dev` overrides the origin for localhost. Deploy Worker changes with
+`npm run deploy` from this directory, then push the frontend to `main` for Pages.
