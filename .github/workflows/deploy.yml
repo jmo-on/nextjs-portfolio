@@ -22,8 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci || npm install
-      - run: npm run build 
+      - run: npm ci
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SCORE_API_URL: ${{ vars.NEXT_PUBLIC_SCORE_API_URL }}
       - name: Add CNAME (custom domain)
         run: echo "www.jinhongmoon.com" > out/CNAME
       - uses: actions/upload-pages-artifact@v3

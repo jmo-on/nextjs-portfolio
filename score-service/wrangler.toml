@@ -1,0 +1,14 @@
+name = "moon-star-eater-score"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "http://127.0.0.1:3000"
+
+[[durable_objects.bindings]]
+name = "SCORES"
+class_name = "GlobalScore"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["GlobalScore"]

@@ -1,59 +1,42 @@
 'use client';
 
-import React from "react"
-import Image from "next/image"
-import { TypeAnimation } from "react-type-animation";
+import { useEffect, useRef, useState } from 'react';
+import { createMoonScene, FlightProgress, FlightSave } from './MoonScene';
+import { useGlobalScore } from './useGlobalScore';
 
-const HeroSection  = () => {
-  return (
-    <section>
-      <div className="grid grid-cols-1">
-        <div className="order-2 col-span-7 text-center">
-          <div className="order-1 col-span-5 place-self-center mb-10">
-            <div className="rounded-full  w-[250px] h-[250px] relative overflow-hidden">
-                <Image
-                src="/images/profile.jpeg"
-                alt="profile image"
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-full min-w-full object-cover"
-                width={500} // trivial
-                height={500} // trivial
-                />
-            </div>
-          </div>
-          <h1 className="text-black mb-4 text-5xl font font-extrabold">
-            Jin Hong Moon
-          </h1>
-          <p className="text-black text-xl mb-6">
-            Undergraduate @ Johns Hopkins University
-            <br/>
-            Software & Machine Learning Engineer
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center sm:gap-4 gap-2 mb-3 items-center">
-            <button className="bg-black rounded-full px-1 py-1">
-              <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
-                <a target="_blank" href="https://www.linkedin.com/in/jayden-moonjh/">LinkedIn</a>
-              </span>
-            </button>
-            <button className="bg-black rounded-full px-1 py-1">
-              <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
-                <a target="_blank" href="https://github.com/jmo-on">GitHub</a>
-              </span>
-            </button>
-            <a
-              href="/Jin_Hong_Moon-Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black rounded-full px-1 py-1"
-            >
-              <span className="block text-black hover:text-gray-200 bg-gray-300 hover:bg-transparent rounded-full px-5 py-2">
-                Resume
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>  
-    </section>
-  )
+export default function HeroSection() {
+  const host = useRef<HTMLDivElement>(null);
+  const profile = useRef<HTMLDivElement>(null);
+  const links = useRef<HTMLDivElement>(null);
+  const controls = useRef<ReturnType<typeof createMoonScene> | null>(null);
+  const [flight, setFlight] = useState(false);
+  const [save, setSave] = useState<FlightSave>({ total: 0, lives: 3, best: 0 });
+  const globalScore = useGlobalScore(save.best);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (!host.current) return;
+    try {
+      controls.current = createMoonScene(host.current, (state: FlightProgress) => {
+        for (const el of [profile.current, links.current]) {
+          if (!el) continue;
+          el.style.opacity = String(1 - Math.min(1, state.travel * 2));
+          el.style.transform = `translateX(${-state.travel * 240}px)`;
+          el.style.visibility = state.travel > .55 ? 'hidden' : 'visible';
+        }
+        setFlight(state.flying);
+        setSave(previous => previous.total === state.save.total && previous.lives === state.save.lives && previous.best === state.save.best ? previous : state.save);
+      });
+    } catch { setError(true); }
+    return () => controls.current?.dispose();
+  }, []);
+
+  return <main className="moon-page">
+    <div ref={host} className="universe" aria-label="Interactive moon. Use arrow keys to walk; your avatar stays centered as the moon rotates. Approach the ship and press Enter to board. Rescue floating people and avoid green aliens. Only alien collisions cost a life; missed people drift past safely. In flight, reach the left edge and hold Left alone for two seconds to return; release to cancel. Zero lives returns you to the moon. All game controls use the keyboard." tabIndex={0}/>
+    <div ref={profile} className="profile"><h1>Jin Hong Moon</h1><p>Software &amp; Machine Learning Engineer</p></div>
+    <div ref={links} className="profile-links"><a href="/Jin_Hong_Moon-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume <span>↗</span></a><span className="link-dot">·</span><a href="https://www.linkedin.com/in/jayden-moonjh/" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a></div>
+    {flight && <div className="flight-tools"><div className="score-stat lives-stat" aria-label={`${save.lives} of 3 lives remaining`}><small>LIVES</small><strong>{Array.from({length:3}, (_, i) => <span key={i} className={i < save.lives ? 'life-full' : 'life-empty'}>👽</span>)}</strong></div><span className="score-divider"/><div className="score-stat"><small>SAVED</small><strong>{save.total.toLocaleString()}</strong></div><span className="score-divider"/><div className="score-stat" title={globalScore.configured ? (globalScore.connected ? 'Most people saved in one flight across all visitors' : 'Reconnecting to the global counter') : 'Shared scoreboard needs a backend connection'}><small>GLOBAL BEST SAVED</small><strong>{globalScore.highScore === null ? '—' : globalScore.highScore.toLocaleString()}</strong>{!globalScore.connected && <span className="score-status">{globalScore.configured ? 'Connecting…' : 'Not connected'}</span>}</div></div>}
+    {flight && save.lives === 0 && <p className="game-over" role="status">Out of lives <span>Returning to the moon</span></p>}
+    {error && <p className="scene-error">The 3D scene needs WebGL enabled in your browser.</p>}
+  </main>;
 }
-
-export default HeroSection

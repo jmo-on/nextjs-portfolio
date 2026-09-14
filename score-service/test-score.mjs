@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+const base = 'http://127.0.0.1:8787';
+const send = (path, body, origin = 'http://127.0.0.1:3000') => fetch(base + path, { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin }, body: JSON.stringify(body) });
+const initial = (await (await fetch(base + '/score')).json()).highScore;
+const sessions = await Promise.all([send('/session', {}), send('/session', {})]);
+const [a, b] = await Promise.all(sessions.map(response => response.json()));
+const results = await Promise.all([send('/score', { token: a.token, points: 2 }), send('/score', { token: b.token, points: 2 })]);
+assert(results.every(r => r.ok));
+assert.equal((await (await fetch(base + '/score')).json()).highScore, Math.max(initial, 2));
+await send('/score', { token: a.token, points: 2 });
+await send('/score', { token: a.token, points: 1 });
+assert.equal((await (await fetch(base + '/score')).json()).highScore, Math.max(initial, 2));
+assert.equal((await send('/score', { token: a.token, points: -100 })).status, 400);
+assert.equal((await send('/score', { token: a.token, points: 10000 })).status, 429);
+assert.equal((await send('/score', { token: a.token, points: 2 }, 'https://not-allowed.example')).status, 403);
+console.log('Passed: two visitors update the high score with MAX, never SUM, retry/out-of-order deduplication, validation, rate ceiling, origin checks.');
